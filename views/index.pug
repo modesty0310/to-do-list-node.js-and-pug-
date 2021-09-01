@@ -7,3 +7,12 @@ html(lang="en")
     title Document
   body 
     h1= message
+    form(action="/", method="post")
+      p
+        label(for="content") 할 일 추가 :
+        input(type="text" name="content")
+        input(type="submit" value="추가하기")
+      p
+        ul
+          each list in todolist
+            li= list.title
