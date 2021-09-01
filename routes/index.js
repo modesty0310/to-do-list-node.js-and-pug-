@@ -10,6 +10,7 @@ console.log(list)})
 });
 
 router.post('/', (req,res,next) => {
+  console.log(req)
   const list = {title : req.body.content, date:req.body.date};
   List.create(list)
   .then(()=>res.redirect('/'))
@@ -22,6 +23,15 @@ router.post('/:id', (req,res,next) => {
   .then(()=>res.redirect('/'))
   .catch((err) => console.log(err))
 });
+
+router.get('/serch', (req,res,next) => {
+  const date = req.query.date;
+  console.log(date)
+  console.log(req.query.date)
+  List.find({date: date})
+  .then(list => res.render('index', {message: `${list.date} 할일 : ${list.length}`, todolist: list}))
+  .catch(err => console.log(err))
+})
 
 module.exports = router;
 

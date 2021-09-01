@@ -8,6 +8,10 @@ html(lang="en")
     title to-do-list
   body 
     h1= message
+    form(action="/serch", method="get")
+      p
+        input(type="date", name="date")
+        input(type="submit" value="이동하기")
     form(action="/", method="post")
       p
         label(for="content") 할 일 추가 :
