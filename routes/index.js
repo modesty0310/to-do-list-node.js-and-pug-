@@ -14,7 +14,14 @@ router.post('/', (req,res,next) => {
   List.create(list)
   .then(()=>res.redirect('/'))
   .catch((err) => console.log(err))
-})
+});
+
+router.post('/:id', (req,res,next) => {
+  const id = req.params.id;
+  List.findByIdAndDelete(id)
+  .then(()=>res.redirect('/'))
+  .catch((err) => console.log(err))
+});
 
 module.exports = router;
 

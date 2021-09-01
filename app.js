@@ -14,11 +14,12 @@ mongoose.connect(process.env.DB_URI,{
 .then(()=> console.log("db connected!"))
 .catch((err) => console.log(err))
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("uploads"));
+app.use(express.static(path.join(__dirname,'public')));
 
 
 app.use('/', require('./routes/index'));

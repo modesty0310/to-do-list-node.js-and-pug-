@@ -4,7 +4,9 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Document
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="javascripts/index.js") 
+    title to-do-list
   body 
     h1= message
     form(action="/", method="post")
@@ -12,7 +14,10 @@ html(lang="en")
         label(for="content") 할 일 추가 :
         input(type="text" name="content")
         input(type="submit" value="추가하기")
-      p
-        ul
-          each list in todolist
+    p
+      ul
+        each list in todolist
+          div
             li= list.title
+            form(action=`/${list._id}`, method="post") 
+              input(type="submit" value="지우기") 
