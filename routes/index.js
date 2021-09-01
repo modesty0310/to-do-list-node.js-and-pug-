@@ -10,7 +10,7 @@ console.log(list)})
 });
 
 router.post('/', (req,res,next) => {
-  const list = {title : req.body.content};
+  const list = {title : req.body.content, date:req.body.date};
   List.create(list)
   .then(()=>res.redirect('/'))
   .catch((err) => console.log(err))
