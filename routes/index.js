@@ -26,10 +26,8 @@ router.post('/:id', (req,res,next) => {
 
 router.get('/serch', (req,res,next) => {
   const date = req.query.date;
-  console.log(date)
-  console.log(req.query.date)
   List.find({date: date})
-  .then(list => res.render('index', {message: `${list.date} 할일 : ${list.length}`, todolist: list}))
+  .then(list => res.render('index', {message: `${date} 할일 : ${list.length}`, todolist: list}))
   .catch(err => console.log(err))
 })
 

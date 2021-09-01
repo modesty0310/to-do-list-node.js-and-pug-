@@ -6,8 +6,20 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet', href='/stylesheets/style.css')
     title to-do-list
+    - var timestamp = Date.now();
+    - var today = new Date(timestamp);
+    - var dayNum = today.getDate();
+    - var year = today.getFullYear();
+    - var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec'];
+    - var month = months[today.getMonth()];
+    - var monthStart = new Date(year, today.getMonth(), 0);
+    - var monthEnd = new Date(year, today.getMonth() + 1, 0);
+    - var daysName = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    - var dayName = daysName[today.getDay()];
+    - var monthLength = ((monthEnd - monthStart) / 86400000) + 1;
+    - var index = 1;
   body 
-    h1= message
+    h1= message.date ? message.date : message
     form(action="/serch", method="get")
       p
         input(type="date", name="date")
@@ -25,3 +37,5 @@ html(lang="en")
             form(action=`/${list._id}`, method="post")
               li= list.title
               button(type="submit") 지우기
+
+    
